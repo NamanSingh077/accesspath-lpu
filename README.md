@@ -32,3 +32,11 @@ The directory retains Main Gate, Admission Block, Academic Blocks 25–38, Engin
 1. Extract the ZIP.
 2. Upload/replace `index.html`, `styles.css`, `script.js`, and `README.md` in the existing GitHub repository.
 3. Commit the update. Vercel should redeploy from the connected repository automatically.
+
+
+## Reverse-direction display
+If a user selects the reverse of a recorded BH1 route (for example, Block 36 → BH1), the site displays the recorded route time as a reverse-direction estimate and clearly asks users to confirm that the same path and time apply.
+
+
+## Prototype route coverage
+The route finder returns a prototype suggestion for every distinct pair in the place directory. For pairs without student-provided route information, the displayed time is an illustrative deterministic demo estimate, not a measured campus time or verified accessible path. Student-provided BH1 route details remain separately identified.

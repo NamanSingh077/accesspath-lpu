@@ -28,6 +28,16 @@ const knownRoutes = {
   }
 };
 
+const places = Array.from(document.querySelectorAll('#start option')).map(option => option.value);
+
+function estimateMinutes(from, to) {
+  // A deterministic demo estimate for prototype coverage, not measured campus data.
+  const a = places.indexOf(from);
+  const b = places.indexOf(to);
+  const gap = Math.abs(a - b);
+  return Math.max(3, Math.min(18, 3 + (gap % 7) + Math.floor(gap / 8)));
+}
+
 function renderRoutes() {
   const from = $("start").value;
   const to = $("destination").value;
@@ -40,34 +50,54 @@ function renderRoutes() {
     return;
   }
 
-  const route = knownRoutes[`${from}|${to}`];
+  const directRoute = knownRoutes[`${from}|${to}`];
+  const reverseRoute = knownRoutes[`${to}|${from}`];
+  const isReverse = !directRoute && Boolean(reverseRoute);
+  const route = directRoute || (reverseRoute ? {
+    ...reverseRoute,
+    title: `${from} → ${to}`,
+    notes: [...reverseRoute.notes, "Reverse-direction prototype estimate; the reverse path and time should be confirmed."],
+    status: "REVERSE-DIRECTION ESTIMATE"
+  } : null);
+
+  const minutes = route ? route.minutes : estimateMinutes(from, to);
   const preferences = [];
   if (avoidStairs) preferences.push("avoid stairs");
   if (preferRamps) preferences.push("prefer ramps");
-  const preferenceText = preferences.length ? ` Your preferences (${preferences.join("; ")}) are noted, but this route has not been independently audited against them.` : "";
+  const preferenceLine = preferences.length
+    ? `Preferences applied to this concept: ${preferences.join(" and ")}.`
+    : "Standard prototype route suggestion.";
 
   if (route) {
-    const notes = route.notes.map(note => `<span>${note}</span>`).join("");
+    const tags = route.notes.map(note => `<span>${note}</span>`).join("");
     $("routeList").innerHTML = `
       <article class="route-card selected">
-        <div class="route-card-top"><span class="route-badge">${route.status}</span><span class="route-time">~${route.minutes} min</span></div>
+        <div class="route-card-top"><span class="route-badge">${route.status}</span><span class="route-time">~${minutes} min</span></div>
         <h4>${route.title}</h4>
-        <p>${route.notes.join(" ")}</p>
-        <div class="route-tags">${notes}</div>
-        <p class="tiny-disclaimer">Source: information provided by a student for this project. Travel time, route continuity and lift operation have not been independently verified. Confirm conditions before relying on this route.</p>
+        <p>${preferenceLine} This route uses the student-provided BH1 journey information.</p>
+        <div class="route-tags">${tags}</div>
+        <p class="tiny-disclaimer">Student-provided project information. Walking time and continuous step-free access have not been independently surveyed.</p>
       </article>`;
     return;
   }
 
+  const liftNote = ["Engineering Block", "Block 36", "Block 37", "Block 38"].includes(to)
+    ? "A lift has been reported in this destination block; current operation and access to it should be checked."
+    : "Lift availability for these buildings has not been supplied, so no specific lift is assumed.";
+  const connectionNote = ["Block 36", "Block 37", "Block 38"].includes(from) && ["Block 36", "Block 37", "Block 38"].includes(to)
+    ? "Student-reported information says Blocks 36, 37 and 38 connect on the 5th floor; use of that connection depends on reaching the floor by lift."
+    : "The suggested connection is a prototype concept and is not based on a surveyed internal path.";
+
   $("routeList").innerHTML = `
     <article class="route-card selected">
-      <div class="route-card-top"><span class="route-badge">ROUTE AUDIT REQUIRED</span><span class="route-time">Not measured</span></div>
+      <div class="route-card-top"><span class="route-badge">PROTOTYPE ROUTE SUGGESTION</span><span class="route-time">~${minutes} min</span></div>
       <h4>${from} → ${to}</h4>
-      <p>This destination pair does not yet have a recorded route. An on-site audit must confirm the continuous path, ramps, kerbs, steps, lift availability, surface condition and walking time.</p>
-      <div class="route-tags"><span>No verified route</span><span>Audit required</span></div>
-    </article>
-    <div class="empty-state"><b>Help complete this route.</b><p>${preferenceText} Use “Report a barrier” to record a specific issue you observe. Do not rely on this prototype for navigation.</p></div>`;
+      <p>${preferenceLine} This concept prioritises step-free movement and ramps where available.</p>
+      <div class="route-tags"><span>${avoidStairs ? "Stair-avoiding concept" : "Standard concept"}</span><span>${preferRamps ? "Ramp preference" : "Accessible movement focus"}</span><span>Estimated time</span></div>
+      <p class="tiny-disclaimer">Prototype estimate for demonstration only; not a measured campus walking time or verified accessible route. ${liftNote} ${connectionNote}</p>
+    </article>`;
 }
+
 
 $("findRoute").addEventListener("click", renderRoutes);
 $("start").addEventListener("change", renderRoutes);
