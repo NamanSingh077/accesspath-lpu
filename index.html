@@ -67,11 +67,17 @@
           <div><b>01</b><span>Main Gate</span></div>
           <div><b>02</b><span>Admission Block</span></div>
           <div><b>03</b><span>Academic Blocks 25–38</span></div>
+          <div><b>03A</b><span>Engineering Block</span></div>
+          <div><b>03B</b><span>Block 36</span></div>
+          <div><b>03C</b><span>Block 37</span></div>
+          <div><b>03D</b><span>Block 38</span></div>
           <div><b>04</b><span>The Chancellory · Building 30</span></div>
           <div><b>05</b><span>Administration-1 · Building 29</span></div>
           <div><b>06</b><span>Library</span></div>
           <div><b>07</b><span>Shanti Devi Mittal Auditorium</span></div>
           <div><b>08</b><span>Hostels & Residences</span></div>
+          <div><b>08A</b><span>BH1</span></div>
+          <div><b>08B</b><span>GH</span></div>
           <div><b>09</b><span>Uni-Hospital</span></div>
           <div><b>10</b><span>Uni-Mall · UniCentre</span></div>
           <div><b>11</b><span>Baldev Raj Mittal Unipolis</span></div>
@@ -82,12 +88,12 @@
           <div><b>16</b><span>Indoor Sports Stadium</span></div>
           <div><b>17</b><span>Cafeterias & Food Kiosks</span></div>
         </div>
-        <small>Place names are compiled from LPU's infrastructure page and campus-related references. This directory is not a surveyed floor plan, and it does not confirm step-free access or exact building locations. <a href="https://www.lpu.in/about-lpu/infrastructure.php" target="_blank" rel="noreferrer">LPU infrastructure ↗</a> · <a href="https://blog402.wordpress.com/lpu/campus-map/" target="_blank" rel="noreferrer">Campus map reference ↗</a></small>
+        <small>Place names are compiled from LPU infrastructure and campus-map references, with BH1 and GH added as campus labels. Scholix describes a searchable block, auditorium, canteen and lecture-room finder. This directory is not a surveyed floor plan, and it does not confirm step-free access, exact building positions or internal routes. <a href="https://www.lpu.in/about-lpu/infrastructure.php" target="_blank" rel="noreferrer">LPU infrastructure ↗</a> · <a href="https://blog402.wordpress.com/lpu/campus-map/" target="_blank" rel="noreferrer">Campus map reference ↗</a> · <a href="https://scholix.app/lpu/campus/map" target="_blank" rel="noreferrer">Scholix LPU map ↗</a></small>
       </div>
     </section>
 
     <section class="notice-wrap">
-      <div class="notice"><span class="notice-icon">i</span><p><strong>Prototype notice</strong> — This is a student project demonstration. Route examples are illustrative, not verified LPU directions. Reports are saved only in this browser and are not sent to university staff.</p></div>
+      <div class="notice"><span class="notice-icon">i</span><p><strong>Prototype notice</strong> — This is a student project demonstration. One set of BH1 walking times and building lift notes was provided by a student and is labelled as user-reported, not independently audited. Other routes are unverified. Reports are saved only in this browser and are not sent to university staff.</p></div>
     </section>
 
     <section class="section intro-section" id="how">
@@ -102,7 +108,7 @@
 
     <section class="route-section" id="routes">
       <div class="route-heading">
-        <div><div class="eyebrow">02 / ROUTE FINDER</div><h2>Where are you<br><em>heading?</em></h2><p class="section-sub">Choose from named LPU buildings and facilities. The directory is not a route map; internal paths must be audited before directions can be shown.</p></div>
+        <div><div class="eyebrow">02 / ROUTE FINDER</div><h2>Where are you<br><em>heading?</em></h2><p class="section-sub">Choose from named LPU buildings and facilities. Known route entries from BH1 are included where student-provided walking-time information is available. Other internal paths still need an on-site audit.</p></div>
         <div class="route-stamp"><span>DESIGNED FOR</span><b>MORE<br>INDEPENDENT<br>JOURNEYS.</b><i>✳</i></div>
       </div>
       <div class="planner">
@@ -112,11 +118,30 @@
           <select id="start"><option value="Main Gate">Main Gate</option>
 <option value="Admission Block">Admission Block</option>
 <option value="Academic Blocks 25–38">Academic Blocks 25–38</option>
+<option value="Engineering Block">Engineering Block</option>
+<option value="Block 36">Block 36</option>
+<option value="Block 37">Block 37</option>
+<option value="Block 38">Block 38</option>
 <option value="The Chancellory (Building 30)">The Chancellory (Building 30)</option>
 <option value="Administration-1 (Building 29)">Administration-1 (Building 29)</option>
 <option value="Library">Library</option>
 <option value="Shanti Devi Mittal Auditorium">Shanti Devi Mittal Auditorium</option>
 <option value="Hostels / Residences">Hostels / Residences</option>
+<option value="BH1">BH1 · Boys Hostel 1</option>
+<option value="BH2">BH2 · Boys Hostel 2</option>
+<option value="BH3">BH3 · Boys Hostel 3</option>
+<option value="BH4">BH4 · Boys Hostel 4</option>
+<option value="BH5">BH5 · Boys Hostel 5</option>
+<option value="BH6">BH6 · Boys Hostel 6</option>
+<option value="BH7">BH7 · Boys Hostel 7</option>
+<option value="BH8">BH8 · Boys Hostel 8</option>
+<option value="GH1">GH1 · Girls Hostel 1</option>
+<option value="GH2">GH2 · Girls Hostel 2</option>
+<option value="GH3">GH3 · Girls Hostel 3</option>
+<option value="GH4">GH4 · Girls Hostel 4</option>
+<option value="GH5">GH5 · Girls Hostel 5</option>
+<option value="GH6">GH6 · Girls Hostel 6</option>
+<option value="GH7">GH7 · Girls Hostel 7</option>
 <option value="Uni-Hospital">Uni-Hospital</option>
 <option value="Uni-Mall (UniCentre)">Uni-Mall (UniCentre)</option>
 <option value="Baldev Raj Mittal Unipolis">Baldev Raj Mittal Unipolis</option>
@@ -131,11 +156,30 @@
           <select id="destination"><option value="Main Gate">Main Gate</option>
 <option value="Admission Block">Admission Block</option>
 <option value="Academic Blocks 25–38">Academic Blocks 25–38</option>
+<option value="Engineering Block">Engineering Block</option>
+<option value="Block 36">Block 36</option>
+<option value="Block 37">Block 37</option>
+<option value="Block 38">Block 38</option>
 <option value="The Chancellory (Building 30)">The Chancellory (Building 30)</option>
 <option value="Administration-1 (Building 29)">Administration-1 (Building 29)</option>
 <option value="Library">Library</option>
 <option value="Shanti Devi Mittal Auditorium">Shanti Devi Mittal Auditorium</option>
 <option value="Hostels / Residences">Hostels / Residences</option>
+<option value="BH1">BH1 · Boys Hostel 1</option>
+<option value="BH2">BH2 · Boys Hostel 2</option>
+<option value="BH3">BH3 · Boys Hostel 3</option>
+<option value="BH4">BH4 · Boys Hostel 4</option>
+<option value="BH5">BH5 · Boys Hostel 5</option>
+<option value="BH6">BH6 · Boys Hostel 6</option>
+<option value="BH7">BH7 · Boys Hostel 7</option>
+<option value="BH8">BH8 · Boys Hostel 8</option>
+<option value="GH1">GH1 · Girls Hostel 1</option>
+<option value="GH2">GH2 · Girls Hostel 2</option>
+<option value="GH3">GH3 · Girls Hostel 3</option>
+<option value="GH4">GH4 · Girls Hostel 4</option>
+<option value="GH5">GH5 · Girls Hostel 5</option>
+<option value="GH6">GH6 · Girls Hostel 6</option>
+<option value="GH7">GH7 · Girls Hostel 7</option>
 <option value="Uni-Hospital">Uni-Hospital</option>
 <option value="Uni-Mall (UniCentre)">Uni-Mall (UniCentre)</option>
 <option value="Baldev Raj Mittal Unipolis">Baldev Raj Mittal Unipolis</option>
@@ -155,12 +199,12 @@
         <div class="route-results">
           <div class="results-top"><div><span class="results-kicker">ROUTE AUDIT STATUS</span><h3 id="resultsTitle">Your route options</h3></div><span class="demo-pill">PLACE DIRECTORY</span></div>
           <div id="routeList" class="route-list" aria-live="polite">
-            <div class="empty-state"><b>Select two LPU destinations to check route-audit status.</b><p>This prototype currently contains building names, not verified paths, distances, travel times, ramp locations or lift status.</p></div>
+            <div class="empty-state"><b>Select two LPU destinations to check route-audit status.</b><p>A small number of BH1 routes use student-provided walking times. Other destination pairs still need verification.</p></div>
           </div>
           <div class="map-legend"><span><i class="legend-green"></i> Suggested concept route</span><span><i class="legend-grey"></i> Verification required</span></div>
         </div>
       </div>
-      <p class="tiny-disclaimer">No walking times, route lines, ramp continuity or lift status are published until they have been checked on campus.</p>
+      <p class="tiny-disclaimer">Student-provided BH1 route details are labelled as such. Other route times, ramp continuity and lift operation are not verified.</p>
     </section>
 
     <section class="access-info-section" id="accessibility-info">
